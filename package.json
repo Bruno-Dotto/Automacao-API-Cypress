@@ -4,7 +4,15 @@
   "description": "",
   "main": "bucas_agendamento.cy.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "smoke": "cypress run --expose grepTags=@smoke,grepFilterSpecs=true,grepOmitFiltered=true",
+    "regression": "cypress run",
+    "booking": "cypress run --env grepTags=@booking,grepFilterSpecs=true,grepOmitFiltered=true",
+    "merge-report": "mochawesome-merge \"cypress/reports/mochawesome*.json\" -o cypress/reports/report.json",
+    "generate-report": "marge cypress/reports/report.json -f report -o cypress/reports",
+    "report": "npm run merge-report && npm run generate-report",
+    "smoke-report": "npm run smoke && npm run report"
   },
   "keywords": [],
   "author": "",
@@ -13,5 +21,11 @@
   "dependencies": {
     "@faker-js/faker": "^10.4.0",
     "cypress": "^15.15.0"
+  },
+  "devDependencies": {
+    "@cypress/grep": "^6.0.2",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.1",
+    "mochawesome-report-generator": "^6.3.2"
   }
 }

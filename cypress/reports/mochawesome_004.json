@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-07-02T00:37:28.810Z",
+    "end": "2026-07-02T00:37:29.295Z",
+    "duration": 485,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "5c44ef1d-8381-4023-bb6d-83dc485e9007",
+      "title": "",
+      "fullFile": "cypress\\e2e\\deletar_agendamento.cy.js",
+      "file": "cypress\\e2e\\deletar_agendamento.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "2e4b80b3-87dc-425c-a816-33a7a6094038",
+          "title": "Deletar agendamento",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deletar agendamento com sucesso",
+              "fullTitle": "Deletar agendamento Deletar agendamento com sucesso",
+              "timedOut": null,
+              "duration": 472,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Cadastro de agendamento - Pré condição\nconst cadastro_agendamento = GerarPayloadCadastro(); // Puxa os dados de agendamento do Fakerjs\nconst update_cadastro = GerarPayloadCadastro(); // Puxa novos dados do Fakesjs\ncy.cadastrarAgendamento(cadastro_agendamento).then(results => {\n  expect(results.status).to.equal(200);\n  const id = results.body.bookingid;\n  //Deletar o agendamento  \n  cy.deletarAgendamento(id, token).then(results => {\n    expect(results.status).to.equal(201);\n  });\n});",
+              "err": {},
+              "uuid": "ec8f5f21-0a61-46cd-9e67-aa0cee886a67",
+              "parentUUID": "2e4b80b3-87dc-425c-a816-33a7a6094038",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ec8f5f21-0a61-46cd-9e67-aa0cee886a67"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 472,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "quiet": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

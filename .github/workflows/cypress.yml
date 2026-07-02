@@ -1,4 +1,4 @@
-name: Cypress Smoke Tests
+name: Cypress CI Pipeline
 
 on:
   push:
@@ -21,7 +21,9 @@ permissions:
   id-token: write
 
 jobs:
+
   smoke-tests:
+    name: 🧪 Smoke Tests
     runs-on: ubuntu-latest
 
     steps:
@@ -40,30 +42,69 @@ jobs:
       - name: 🧪 Executar Smoke Tests
         run: npm run smoke
 
-      - name: 📊 Gerar relatório Mochawesome
+      - name: 📊 Gerar relatório
         if: always()
         run: npm run report
 
-      - name: 📄 Criar index.html
+      - name: 📁 Preparar artefato Smoke
         if: always()
-        run: cp cypress/reports/report.html cypress/reports/index.html
+        run: |
+          mkdir -p artifacts/smoke
+          cp -R cypress/reports/* artifacts/smoke/
 
-      - name: 📁 Upload do relatório
+      - name: 📤 Upload artefato Smoke
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: mochawesome-report
-          path: cypress/reports
+          name: smoke-report
+          path: artifacts/smoke
+
+  regression-tests:
+    name: 🔄 Regression Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout do código
+        uses: actions/checkout@v4
+
+      - name: 🟢 Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: 📦 Instalar dependências
+        run: npm ci
+
+      - name: 🔄 Executar Regression Tests
+        run: npm run regression
+
+      - name: 📊 Gerar relatório
+        if: always()
+        run: npm run report
+
+      - name: 📁 Preparar artefato Regression
+        if: always()
+        run: |
+          mkdir -p artifacts/regression
+          cp -R cypress/reports/* artifacts/regression/
+
+      - name: 📤 Upload artefato Regression
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-report
+          path: artifacts/regression
 
       - name: 📄 Configurar GitHub Pages
         if: always()
         uses: actions/configure-pages@v5
 
-      - name: 📤 Upload para GitHub Pages
+      - name: 📤 Upload GitHub Pages
         if: always()
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./cypress/reports
+          path: artifacts/regression
 
       - name: 🚀 Publicar GitHub Pages
         if: always()

@@ -44,6 +44,18 @@ jobs:
         if: always()
         run: npm run report
 
+      - name: 📂 Verificar arquivos do relatório
+        if: always()
+        run: |
+          echo "========== PASTA REPORTS =========="
+          ls -la cypress/reports || true
+          echo ""
+          echo "========== TODOS OS ARQUIVOS =========="
+          find cypress/reports || true
+          echo ""
+          echo "========== REPORT.JSON =========="
+          cat cypress/reports/report.json || true
+
       - name: 📁 Upload do relatório
         if: always()
         uses: actions/upload-artifact@v4

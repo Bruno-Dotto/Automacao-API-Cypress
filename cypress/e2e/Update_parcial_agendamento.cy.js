@@ -24,7 +24,7 @@ describe('Update parcial do agendamento', () => {
         })
     })
     // o IT Representa um cenário de teste.
-    it('Update parcial de agendamento', () => {
+    it('Update parcial de agendamento', { tags: ['@smoke', '@regression','@booking'] }, () => {
         // Cadastro de agendamento - Pré condição
 
         const cadastro_agendamento = GerarPayloadCadastro() // Puxa os dados de agendamento do Fakerjs

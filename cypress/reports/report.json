@@ -1,11 +1,11 @@
 {
   "stats": {
-    "suites": 1,
-    "tests": 1,
-    "passes": 1,
+    "suites": 13,
+    "tests": 16,
+    "passes": 16,
     "pending": 0,
     "failures": 0,
-    "testsRegistered": 1,
+    "testsRegistered": 16,
     "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
@@ -13,10 +13,763 @@
     "skipped": 0,
     "hasSkipped": false,
     "start": "2026-07-02T00:35:10.030Z",
-    "end": "2026-07-02T00:35:11.268Z",
-    "duration": 1238
+    "end": "2026-07-02T01:24:45.691Z",
+    "duration": 2975661
   },
   "results": [
+    {
+      "uuid": "d2a4f010-343a-49f4-8f7c-5c20d69d7069",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Update_parcial_agendamento.cy.js",
+      "file": "cypress\\e2e\\Update_parcial_agendamento.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "c8a4c77e-05c8-47b0-8ba0-777c2bc8e34f",
+          "title": "Update parcial do agendamento",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Update parcial de agendamento",
+              "fullTitle": "Update parcial do agendamento Update parcial de agendamento",
+              "timedOut": null,
+              "duration": 1064,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Cadastro de agendamento - Pré condição\nconst cadastro_agendamento = GerarPayloadCadastro(); // Puxa os dados de agendamento do Fakerjs\nconst update_cadastro = GerarPayloadCadastro(); // Puxa novos dados do Fakesjs\ncy.cadastrarAgendamento(cadastro_agendamento).then(results => {\n  expect(results.status).to.equal(200);\n  const id = results.body.bookingid;\n  //Update parcial do agendamento \n  cy.atualizarAgendamento(id, update_cadastro, token).then(results => {\n    expect(results.status).to.equal(200);\n  });\n});",
+              "err": {},
+              "uuid": "8643d564-88ca-48e8-8dbf-1e9f4d30ca5e",
+              "parentUUID": "c8a4c77e-05c8-47b0-8ba0-777c2bc8e34f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8643d564-88ca-48e8-8dbf-1e9f4d30ca5e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1064,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "44be494e-d368-450f-bc99-1d2288849148",
+      "title": "",
+      "fullFile": "cypress\\e2e\\bucas_agendamento.cy.js",
+      "file": "cypress\\e2e\\bucas_agendamento.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "9477ff33-8b2b-449d-8158-cb06bd18195a",
+          "title": "Buscar agendamento",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Buscar agendamento com sucesso",
+              "fullTitle": "Buscar agendamento Buscar agendamento com sucesso",
+              "timedOut": null,
+              "duration": 326,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Cadastro de agendamento - Pré condição\ncy.request({\n  method: \"POST\",\n  url: \"/booking\",\n  body: dados_agendamento\n}).then(results => {\n  expect(results.status).to.equal(200);\n  const id = results.body.bookingid;\n  //Buscar o agendamento  \n  cy.request({\n    method: \"GET\",\n    url: \"/booking/\" + id\n  }).then(result => {\n    expect(results.status).to.equal(200);\n    expect(results.body.booking.firstname).to.equal(dados_agendamento.firstname);\n    expect(results.body.booking.lastname).to.equal(dados_agendamento.lastname);\n    expect(results.body.booking.totalprice).to.equal(dados_agendamento.totalprice);\n  });\n});",
+              "err": {},
+              "uuid": "ee887b59-01f4-44bf-b0bd-40566e4cfb36",
+              "parentUUID": "9477ff33-8b2b-449d-8158-cb06bd18195a",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Buscar agendamento inexistente",
+              "fullTitle": "Buscar agendamento Buscar agendamento inexistente",
+              "timedOut": null,
+              "duration": 155,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: \"GET\",\n  url: \"/xpto\",\n  failOnStatusCode: false\n}).then(result => {\n  expect(result.status).to.equal(404);\n});",
+              "err": {},
+              "uuid": "838647df-6385-44a2-960c-f6d4dbc424f9",
+              "parentUUID": "9477ff33-8b2b-449d-8158-cb06bd18195a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ee887b59-01f4-44bf-b0bd-40566e4cfb36",
+            "838647df-6385-44a2-960c-f6d4dbc424f9"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 481,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "9737a26d-ff4c-4adc-b96c-c56acdcba97d",
+      "title": "",
+      "fullFile": "cypress\\e2e\\cadastrar_agendamento.cy.js",
+      "file": "cypress\\e2e\\cadastrar_agendamento.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "59058609-54fa-4a87-a68c-eb417d11feb7",
+          "title": "Cadastrar agendamento",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Cadrastrar agendamento com sucesso - Dados aleatórios",
+              "fullTitle": "Cadastrar agendamento Cadrastrar agendamento com sucesso - Dados aleatórios",
+              "timedOut": null,
+              "duration": 178,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// const payload = {\n//     \"firstname\": faker.person.firstName(),\n//     \"lastname\": faker.person.lastName(),\n//     \"totalprice\": faker.number.int({ min: 100, max: 1000 }),\n//     \"depositpaid\": true,\n//     \"bookingdates\": {\n//         \"checkin\": faker.date.anytime(),\n//         \"checkout\": faker.date.anytime(),\n//     },\n//     \"additionalneeds\": faker.lorem.sentence(3),\n// }\ncy.cadastrarAgendamento(payload).then(results => {\n  expect(results.status).to.equal(200);\n  expect(results.body.bookingid).not.NaN; //not.NaN para confirmar que ele é um numero e não string\n  expect(results.body.booking.firstname).to.equal(payload.firstname);\n  expect(results.body.booking.lastname).to.equal(payload.lastname);\n});",
+              "err": {},
+              "uuid": "8f6ea47c-69fc-4d65-8427-7bb1d70bcbd9",
+              "parentUUID": "59058609-54fa-4a87-a68c-eb417d11feb7",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8f6ea47c-69fc-4d65-8427-7bb1d70bcbd9"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 178,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "5c44ef1d-8381-4023-bb6d-83dc485e9007",
+      "title": "",
+      "fullFile": "cypress\\e2e\\deletar_agendamento.cy.js",
+      "file": "cypress\\e2e\\deletar_agendamento.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "2e4b80b3-87dc-425c-a816-33a7a6094038",
+          "title": "Deletar agendamento",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deletar agendamento com sucesso",
+              "fullTitle": "Deletar agendamento Deletar agendamento com sucesso",
+              "timedOut": null,
+              "duration": 472,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Cadastro de agendamento - Pré condição\nconst cadastro_agendamento = GerarPayloadCadastro(); // Puxa os dados de agendamento do Fakerjs\nconst update_cadastro = GerarPayloadCadastro(); // Puxa novos dados do Fakesjs\ncy.cadastrarAgendamento(cadastro_agendamento).then(results => {\n  expect(results.status).to.equal(200);\n  const id = results.body.bookingid;\n  //Deletar o agendamento  \n  cy.deletarAgendamento(id, token).then(results => {\n    expect(results.status).to.equal(201);\n  });\n});",
+              "err": {},
+              "uuid": "ec8f5f21-0a61-46cd-9e67-aa0cee886a67",
+              "parentUUID": "2e4b80b3-87dc-425c-a816-33a7a6094038",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ec8f5f21-0a61-46cd-9e67-aa0cee886a67"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 472,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "35397f43-21ab-4aec-bb4d-0629258a62a6",
+      "title": "",
+      "fullFile": "cypress\\e2e\\bucas_agendamento.cy.js",
+      "file": "cypress\\e2e\\bucas_agendamento.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "dbd4a260-349e-4978-9f0b-915f6d1209cc",
+          "title": "Buscar agendamento",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Buscar agendamento com sucesso",
+              "fullTitle": "Buscar agendamento Buscar agendamento com sucesso",
+              "timedOut": null,
+              "duration": 899,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Cadastro de agendamento - Pré condição\ncy.request({\n  method: \"POST\",\n  url: \"/booking\",\n  body: dados_agendamento\n}).then(results => {\n  expect(results.status).to.equal(200);\n  const id = results.body.bookingid;\n  //Buscar o agendamento  \n  cy.request({\n    method: \"GET\",\n    url: \"/booking/\" + id\n  }).then(result => {\n    expect(results.status).to.equal(200);\n    expect(results.body.booking.firstname).to.equal(dados_agendamento.firstname);\n    expect(results.body.booking.lastname).to.equal(dados_agendamento.lastname);\n    expect(results.body.booking.totalprice).to.equal(dados_agendamento.totalprice);\n  });\n});",
+              "err": {},
+              "uuid": "3ab4c9ee-b926-41cc-88ad-3ef5af860064",
+              "parentUUID": "dbd4a260-349e-4978-9f0b-915f6d1209cc",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Buscar agendamento inexistente",
+              "fullTitle": "Buscar agendamento Buscar agendamento inexistente",
+              "timedOut": null,
+              "duration": 158,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: \"GET\",\n  url: \"/xpto\",\n  failOnStatusCode: false\n}).then(result => {\n  expect(result.status).to.equal(404);\n});",
+              "err": {},
+              "uuid": "4f6788dd-0c6d-4b29-9fce-c4021928cb60",
+              "parentUUID": "dbd4a260-349e-4978-9f0b-915f6d1209cc",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "3ab4c9ee-b926-41cc-88ad-3ef5af860064",
+            "4f6788dd-0c6d-4b29-9fce-c4021928cb60"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1057,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "17faebd5-8f3c-4430-93a0-a89b1fc4059e",
+      "title": "",
+      "fullFile": "cypress\\e2e\\cadastrar_agendamento.cy.js",
+      "file": "cypress\\e2e\\cadastrar_agendamento.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "f3332648-1447-42f0-a1e8-e351329355eb",
+          "title": "Cadastrar agendamento",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Cadrastrar agendamento com sucesso - Dados aleatórios",
+              "fullTitle": "Cadastrar agendamento Cadrastrar agendamento com sucesso - Dados aleatórios",
+              "timedOut": null,
+              "duration": 177,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// const payload = {\n//     \"firstname\": faker.person.firstName(),\n//     \"lastname\": faker.person.lastName(),\n//     \"totalprice\": faker.number.int({ min: 100, max: 1000 }),\n//     \"depositpaid\": true,\n//     \"bookingdates\": {\n//         \"checkin\": faker.date.anytime(),\n//         \"checkout\": faker.date.anytime(),\n//     },\n//     \"additionalneeds\": faker.lorem.sentence(3),\n// }\ncy.cadastrarAgendamento(payload).then(results => {\n  expect(results.status).to.equal(200);\n  expect(results.body.bookingid).not.NaN; //not.NaN para confirmar que ele é um numero e não string\n  expect(results.body.booking.firstname).to.equal(payload.firstname);\n  expect(results.body.booking.lastname).to.equal(payload.lastname);\n});",
+              "err": {},
+              "uuid": "ce484928-316b-4920-b15d-3a8cc0693a96",
+              "parentUUID": "f3332648-1447-42f0-a1e8-e351329355eb",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ce484928-316b-4920-b15d-3a8cc0693a96"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 177,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "953867b3-f449-4c59-b27b-b99afbf053db",
+      "title": "",
+      "fullFile": "cypress\\e2e\\deletar_agendamento.cy.js",
+      "file": "cypress\\e2e\\deletar_agendamento.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4c7c07a7-7735-48f1-a420-7298620e0c1f",
+          "title": "Deletar agendamento",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deletar agendamento com sucesso",
+              "fullTitle": "Deletar agendamento Deletar agendamento com sucesso",
+              "timedOut": null,
+              "duration": 472,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Cadastro de agendamento - Pré condição\nconst cadastro_agendamento = GerarPayloadCadastro(); // Puxa os dados de agendamento do Fakerjs\nconst update_cadastro = GerarPayloadCadastro(); // Puxa novos dados do Fakesjs\ncy.cadastrarAgendamento(cadastro_agendamento).then(results => {\n  expect(results.status).to.equal(200);\n  const id = results.body.bookingid;\n  //Deletar o agendamento  \n  cy.deletarAgendamento(id, token).then(results => {\n    expect(results.status).to.equal(201);\n  });\n});",
+              "err": {},
+              "uuid": "b1197005-1c79-4161-a84d-783b0db030b4",
+              "parentUUID": "4c7c07a7-7735-48f1-a420-7298620e0c1f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b1197005-1c79-4161-a84d-783b0db030b4"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 472,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "a605f973-4b68-426f-98e2-6bbc153afa42",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Update_parcial_agendamento.cy.js",
+      "file": "cypress\\e2e\\Update_parcial_agendamento.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "0a364df4-52d0-4c23-9226-2e986026b4ca",
+          "title": "Update parcial do agendamento",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Update parcial de agendamento",
+              "fullTitle": "Update parcial do agendamento Update parcial de agendamento",
+              "timedOut": null,
+              "duration": 473,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Cadastro de agendamento - Pré condição\nconst cadastro_agendamento = GerarPayloadCadastro(); // Puxa os dados de agendamento do Fakerjs\nconst update_cadastro = GerarPayloadCadastro(); // Puxa novos dados do Fakesjs\ncy.cadastrarAgendamento(cadastro_agendamento).then(results => {\n  expect(results.status).to.equal(200);\n  const id = results.body.bookingid;\n  //Update parcial do agendamento \n  cy.atualizarAgendamento(id, update_cadastro, token).then(results => {\n    expect(results.status).to.equal(200);\n  });\n});",
+              "err": {},
+              "uuid": "52a0dc12-8567-4a3c-8ca6-1a9b6a081ef9",
+              "parentUUID": "0a364df4-52d0-4c23-9226-2e986026b4ca",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "52a0dc12-8567-4a3c-8ca6-1a9b6a081ef9"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 473,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "0fdec010-34e2-493b-bdb3-6e3aedd8acf9",
+      "title": "",
+      "fullFile": "cypress\\e2e\\bucas_agendamento.cy.js",
+      "file": "cypress\\e2e\\bucas_agendamento.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d0b3ebcf-1460-441c-b7a2-65421faf1d0d",
+          "title": "Buscar agendamento",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Buscar agendamento com sucesso",
+              "fullTitle": "Buscar agendamento Buscar agendamento com sucesso",
+              "timedOut": null,
+              "duration": 895,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Cadastro de agendamento - Pré condição\ncy.request({\n  method: \"POST\",\n  url: \"/booking\",\n  body: dados_agendamento\n}).then(results => {\n  expect(results.status).to.equal(200);\n  const id = results.body.bookingid;\n  //Buscar o agendamento  \n  cy.request({\n    method: \"GET\",\n    url: \"/booking/\" + id\n  }).then(result => {\n    expect(results.status).to.equal(200);\n    expect(results.body.booking.firstname).to.equal(dados_agendamento.firstname);\n    expect(results.body.booking.lastname).to.equal(dados_agendamento.lastname);\n    expect(results.body.booking.totalprice).to.equal(dados_agendamento.totalprice);\n  });\n});",
+              "err": {},
+              "uuid": "d9ac8196-a750-48b3-9498-d093f3d3607a",
+              "parentUUID": "d0b3ebcf-1460-441c-b7a2-65421faf1d0d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Buscar agendamento inexistente",
+              "fullTitle": "Buscar agendamento Buscar agendamento inexistente",
+              "timedOut": null,
+              "duration": 155,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: \"GET\",\n  url: \"/xpto\",\n  failOnStatusCode: false\n}).then(result => {\n  expect(result.status).to.equal(404);\n});",
+              "err": {},
+              "uuid": "f8de8e6f-076c-47d6-9a1d-fdd3dbc5c5fa",
+              "parentUUID": "d0b3ebcf-1460-441c-b7a2-65421faf1d0d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d9ac8196-a750-48b3-9498-d093f3d3607a",
+            "f8de8e6f-076c-47d6-9a1d-fdd3dbc5c5fa"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1050,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "02d7f39e-02c0-45ac-b213-50caf9359e2e",
+      "title": "",
+      "fullFile": "cypress\\e2e\\cadastrar_agendamento.cy.js",
+      "file": "cypress\\e2e\\cadastrar_agendamento.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4062303a-4702-4acc-8d2f-65829c034aab",
+          "title": "Cadastrar agendamento",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Cadrastrar agendamento com sucesso - Dados aleatórios",
+              "fullTitle": "Cadastrar agendamento Cadrastrar agendamento com sucesso - Dados aleatórios",
+              "timedOut": null,
+              "duration": 176,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// const payload = {\n//     \"firstname\": faker.person.firstName(),\n//     \"lastname\": faker.person.lastName(),\n//     \"totalprice\": faker.number.int({ min: 100, max: 1000 }),\n//     \"depositpaid\": true,\n//     \"bookingdates\": {\n//         \"checkin\": faker.date.anytime(),\n//         \"checkout\": faker.date.anytime(),\n//     },\n//     \"additionalneeds\": faker.lorem.sentence(3),\n// }\ncy.cadastrarAgendamento(payload).then(results => {\n  expect(results.status).to.equal(200);\n  expect(results.body.bookingid).not.NaN; //not.NaN para confirmar que ele é um numero e não string\n  expect(results.body.booking.firstname).to.equal(payload.firstname);\n  expect(results.body.booking.lastname).to.equal(payload.lastname);\n});",
+              "err": {},
+              "uuid": "bbcba171-c8ab-4591-af50-536ecd6fdc40",
+              "parentUUID": "4062303a-4702-4acc-8d2f-65829c034aab",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "bbcba171-c8ab-4591-af50-536ecd6fdc40"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 176,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "f541a5c0-3582-40e4-a74e-0ba0bc09b9c4",
+      "title": "",
+      "fullFile": "cypress\\e2e\\deletar_agendamento.cy.js",
+      "file": "cypress\\e2e\\deletar_agendamento.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a50cc52d-b1b8-4d00-a4c4-fab030df1554",
+          "title": "Deletar agendamento",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deletar agendamento com sucesso",
+              "fullTitle": "Deletar agendamento Deletar agendamento com sucesso",
+              "timedOut": null,
+              "duration": 473,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Cadastro de agendamento - Pré condição\nconst cadastro_agendamento = GerarPayloadCadastro(); // Puxa os dados de agendamento do Fakerjs\nconst update_cadastro = GerarPayloadCadastro(); // Puxa novos dados do Fakesjs\ncy.cadastrarAgendamento(cadastro_agendamento).then(results => {\n  expect(results.status).to.equal(200);\n  const id = results.body.bookingid;\n  //Deletar o agendamento  \n  cy.deletarAgendamento(id, token).then(results => {\n    expect(results.status).to.equal(201);\n  });\n});",
+              "err": {},
+              "uuid": "8727d793-2fa3-48df-b9ba-bbe5f80520f6",
+              "parentUUID": "a50cc52d-b1b8-4d00-a4c4-fab030df1554",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8727d793-2fa3-48df-b9ba-bbe5f80520f6"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 473,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "d2ae7aee-3456-4822-be66-b2b8d7285460",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Update_parcial_agendamento.cy.js",
+      "file": "cypress\\e2e\\Update_parcial_agendamento.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "bea28c8e-037e-421b-8df0-c1ac8ea252f9",
+          "title": "Update parcial do agendamento",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Update parcial de agendamento",
+              "fullTitle": "Update parcial do agendamento Update parcial de agendamento",
+              "timedOut": null,
+              "duration": 472,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Cadastro de agendamento - Pré condição\nconst cadastro_agendamento = GerarPayloadCadastro(); // Puxa os dados de agendamento do Fakerjs\nconst update_cadastro = GerarPayloadCadastro(); // Puxa novos dados do Fakesjs\ncy.cadastrarAgendamento(cadastro_agendamento).then(results => {\n  expect(results.status).to.equal(200);\n  const id = results.body.bookingid;\n  //Update parcial do agendamento \n  cy.atualizarAgendamento(id, update_cadastro, token).then(results => {\n    expect(results.status).to.equal(200);\n  });\n});",
+              "err": {},
+              "uuid": "b2d1fd9f-5339-4f46-8f56-c1a70b421360",
+              "parentUUID": "bea28c8e-037e-421b-8df0-c1ac8ea252f9",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b2d1fd9f-5339-4f46-8f56-c1a70b421360"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 472,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
     {
       "uuid": "185d482e-145a-4089-bee5-be38b5b5c9df",
       "title": "",

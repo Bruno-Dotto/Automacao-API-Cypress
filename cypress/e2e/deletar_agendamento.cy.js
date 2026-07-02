@@ -17,7 +17,7 @@ describe('Deletar agendamento', () => {
         })
     })
 
-    it('Deletar agendamento com sucesso', { tags: ['@smoke', '@booking'] }, () => {
+    it('Deletar agendamento com sucesso', { tags: ['@smoke', '@regression','@booking'] }, () => {
         // Cadastro de agendamento - Pré condição
 
         const cadastro_agendamento = GerarPayloadCadastro() // Puxa os dados de agendamento do Fakerjs

@@ -3,7 +3,7 @@
 
 const dados_agendamento = require('../fixtures/dados_agendamento.json')
 
-describe('Buscar agendamento', () => {
+describe('Buscar agendamento', { tags: ['@regression', '@booking'] }, () => {
 
     it('Buscar agendamento com sucesso', () => {
         // Cadastro de agendamento - Pré condição

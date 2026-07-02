@@ -1,0 +1,125 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-07-02T01:22:50.320Z",
+    "end": "2026-07-02T01:22:51.400Z",
+    "duration": 1080,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "35397f43-21ab-4aec-bb4d-0629258a62a6",
+      "title": "",
+      "fullFile": "cypress\\e2e\\bucas_agendamento.cy.js",
+      "file": "cypress\\e2e\\bucas_agendamento.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "dbd4a260-349e-4978-9f0b-915f6d1209cc",
+          "title": "Buscar agendamento",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Buscar agendamento com sucesso",
+              "fullTitle": "Buscar agendamento Buscar agendamento com sucesso",
+              "timedOut": null,
+              "duration": 899,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// Cadastro de agendamento - Pré condição\ncy.request({\n  method: \"POST\",\n  url: \"/booking\",\n  body: dados_agendamento\n}).then(results => {\n  expect(results.status).to.equal(200);\n  const id = results.body.bookingid;\n  //Buscar o agendamento  \n  cy.request({\n    method: \"GET\",\n    url: \"/booking/\" + id\n  }).then(result => {\n    expect(results.status).to.equal(200);\n    expect(results.body.booking.firstname).to.equal(dados_agendamento.firstname);\n    expect(results.body.booking.lastname).to.equal(dados_agendamento.lastname);\n    expect(results.body.booking.totalprice).to.equal(dados_agendamento.totalprice);\n  });\n});",
+              "err": {},
+              "uuid": "3ab4c9ee-b926-41cc-88ad-3ef5af860064",
+              "parentUUID": "dbd4a260-349e-4978-9f0b-915f6d1209cc",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Buscar agendamento inexistente",
+              "fullTitle": "Buscar agendamento Buscar agendamento inexistente",
+              "timedOut": null,
+              "duration": 158,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: \"GET\",\n  url: \"/xpto\",\n  failOnStatusCode: false\n}).then(result => {\n  expect(result.status).to.equal(404);\n});",
+              "err": {},
+              "uuid": "4f6788dd-0c6d-4b29-9fce-c4021928cb60",
+              "parentUUID": "dbd4a260-349e-4978-9f0b-915f6d1209cc",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "3ab4c9ee-b926-41cc-88ad-3ef5af860064",
+            "4f6788dd-0c6d-4b29-9fce-c4021928cb60"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1057,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "quiet": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

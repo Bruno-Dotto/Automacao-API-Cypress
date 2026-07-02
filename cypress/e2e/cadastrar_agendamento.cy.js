@@ -6,7 +6,7 @@ const cadastro_payload = require('../fixtures/gerar_dados_faker');
 
 import { fa, faker } from '@faker-js/faker';
 
-describe('Cadastrar agendamento', () => {
+describe('Cadastrar agendamento', { tags: ['@regression', '@booking'] }, () => {
 
     // Utiliza o Fakerjs para gerar os dados do agendamento
 

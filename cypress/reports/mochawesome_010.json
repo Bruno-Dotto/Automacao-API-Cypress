@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-07-02T01:24:40.568Z",
+    "end": "2026-07-02T01:24:40.763Z",
+    "duration": 195,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "02d7f39e-02c0-45ac-b213-50caf9359e2e",
+      "title": "",
+      "fullFile": "cypress\\e2e\\cadastrar_agendamento.cy.js",
+      "file": "cypress\\e2e\\cadastrar_agendamento.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4062303a-4702-4acc-8d2f-65829c034aab",
+          "title": "Cadastrar agendamento",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Cadrastrar agendamento com sucesso - Dados aleatórios",
+              "fullTitle": "Cadastrar agendamento Cadrastrar agendamento com sucesso - Dados aleatórios",
+              "timedOut": null,
+              "duration": 176,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// const payload = {\n//     \"firstname\": faker.person.firstName(),\n//     \"lastname\": faker.person.lastName(),\n//     \"totalprice\": faker.number.int({ min: 100, max: 1000 }),\n//     \"depositpaid\": true,\n//     \"bookingdates\": {\n//         \"checkin\": faker.date.anytime(),\n//         \"checkout\": faker.date.anytime(),\n//     },\n//     \"additionalneeds\": faker.lorem.sentence(3),\n// }\ncy.cadastrarAgendamento(payload).then(results => {\n  expect(results.status).to.equal(200);\n  expect(results.body.bookingid).not.NaN; //not.NaN para confirmar que ele é um numero e não string\n  expect(results.body.booking.firstname).to.equal(payload.firstname);\n  expect(results.body.booking.lastname).to.equal(payload.lastname);\n});",
+              "err": {},
+              "uuid": "bbcba171-c8ab-4591-af50-536ecd6fdc40",
+              "parentUUID": "4062303a-4702-4acc-8d2f-65829c034aab",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "bbcba171-c8ab-4591-af50-536ecd6fdc40"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 176,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "quiet": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

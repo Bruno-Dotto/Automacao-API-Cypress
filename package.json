@@ -6,13 +6,17 @@
   "scripts": {
     "cy:open": "cypress open",
     "cy:run": "cypress run",
+
     "smoke": "cypress run --expose grepTags=@smoke,grepFilterSpecs=true,grepOmitFiltered=true",
-    "regression": "cypress run",
-    "booking": "cypress run --env grepTags=@booking,grepFilterSpecs=true,grepOmitFiltered=true",
+    "regression": "cypress run --expose grepTags=@regression,grepFilterSpecs=true,grepOmitFiltered=true",
+    "booking": "cypress run --expose grepTags=@booking,grepFilterSpecs=true,grepOmitFiltered=true",
+
     "merge-report": "mochawesome-merge \"cypress/reports/mochawesome*.json\" -o cypress/reports/report.json",
     "generate-report": "marge cypress/reports/report.json -f report -o cypress/reports",
     "report": "npm run merge-report && npm run generate-report",
-    "smoke-report": "npm run smoke && npm run report"
+
+    "smoke-report": "npm run smoke && npm run report",
+    "regression-report": "npm run regression && npm run report"
   },
   "keywords": [],
   "author": "",

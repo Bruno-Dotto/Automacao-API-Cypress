@@ -1,13 +1,16 @@
 # 🚀 Automação de Testes de API com Cypress
 
-![Cypress](https://img.shields.io/badge/Cypress-15.15.0-69D3A7?logo=cypress&logoColor=white)
-![Node](https://img.shields.io/badge/Node.js-20.x-339933?logo=node.js&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI/CD-2088FF?logo=github-actions&logoColor=white)
-![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-Report-blue?logo=github)
+[![Cypress](https://img.shields.io/badge/Cypress-15.15.0-69D3A7?logo=cypress&logoColor=white)](https://www.cypress.io/)
+
+[![Node.js](https://img.shields.io/badge/Node.js-20.x-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+
+[![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI/CD-2088FF?logo=github-actions&logoColor=white)](https://github.com/Bruno-Dotto/Automacao-API-Cypress/actions)
 
 [![Pipeline Status](https://github.com/Bruno-Dotto/Automacao-API-Cypress/actions/workflows/cypress.yml/badge.svg)](https://github.com/Bruno-Dotto/Automacao-API-Cypress/actions/workflows/cypress.yml)
 
-![License: MIT](https://img.shields.io/github/license/Bruno-Dotto/Automacao-API-Cypress)
+[![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-Test%20Report-blue?logo=github)](https://bruno-dotto.github.io/Automacao-API-Cypress/)
+
+[![License: MIT](https://img.shields.io/github/license/Bruno-Dotto/Automacao-API-Cypress)](LICENSE)
 
 Projeto desenvolvido para automação de testes de API utilizando **Cypress**, aplicando boas práticas de automação, organização do framework, geração de relatórios e integração contínua com **GitHub Actions**.
 

@@ -4,6 +4,9 @@
 ![Node](https://img.shields.io/badge/Node.js-20.x-339933?logo=node.js&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI/CD-2088FF?logo=github-actions&logoColor=white)
 ![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-Report-blue?logo=github)
+
+[![Pipeline Status](https://github.com/Bruno-Dotto/Automacao-API-Cypress/actions/workflows/cypress.yml/badge.svg)](https://github.com/Bruno-Dotto/Automacao-API-Cypress/actions/workflows/cypress.yml)
+
 ![License: MIT](https://img.shields.io/github/license/Bruno-Dotto/Automacao-API-Cypress)
 
 Projeto desenvolvido para automação de testes de API utilizando **Cypress**, aplicando boas práticas de automação, organização do framework, geração de relatórios e integração contínua com **GitHub Actions**.
